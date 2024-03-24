@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 import { OlympicDto } from '../../shared/models/dto/olympic-dto';
 import { Participation } from '../../shared/models/participation/participations';
 import { OlympicServiceService } from '../../shared/services/olympic-service.service';
@@ -11,8 +11,10 @@ import { OlympicServiceService } from '../../shared/services/olympic-service.ser
 })
 export class HomeComponent implements OnInit {
 
-  olympic!: OlympicDto[];
+  public olympic!: OlympicDto[];
   participations!: Participation[];
+
+  public getDataForChart: any[] = [];
 
   public numberOfJOs:number = 0;
   public numberOfCountry:number = 0;
@@ -21,17 +23,27 @@ export class HomeComponent implements OnInit {
   public view: [number,number] = [400, 300];
   public showLabels: boolean = true;
 
-  constructor(private olympicService: OlympicServiceService){
+  constructor(private router: Router ,private olympicService: OlympicServiceService){
   }
   ngOnInit(): void {
     this.getAllOlympics();
-    console.log(this.olympic)
+    if(this.olympic != null){
+      this.productSales = [];
+      for(let i =0 ; i< this.olympic.length ; i++){
+        this.productSales.push(
+          {
+            "name": this.olympic[i].country,
+            "value": this.olympic[i].totalMedals,
+          }
+        )
+      }
+    }
   }
 
   public productSales = [
     {
       "name": "book",
-      "value": 5001
+      "value": 5001,
     }, {
       "name": "graphic",
       "value": 7322
@@ -64,14 +76,22 @@ export class HomeComponent implements OnInit {
   getTotalMedals(){
     for(let i of this.olympic){
       this.numberOfCountry+=1;
-     this.participations = i.participations;
+      this.participations = i.participations;
      for(let j of this.participations){
       i.totalMedals += j.medalsCount;
       this.numberOfJOs+=1;
      }
+     
     }
     this.numberOfJOs/=this.numberOfCountry;
   }
-  
 
+  onSelect(data:[]): void {
+    let id = JSON.parse(JSON.stringify(data));
+    if(this.olympic != null){
+      let donee = this.olympic.find( o => o.country == id.name);
+      if(donee?.id)
+        this.router.navigate(['/detail',donee?.id ])
+    }
+  }
 }
