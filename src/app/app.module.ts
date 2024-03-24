@@ -8,6 +8,9 @@ import { DetailComponent } from './views/detail/detail.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OlympicServiceService } from './shared/services/olympic-service.service';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()

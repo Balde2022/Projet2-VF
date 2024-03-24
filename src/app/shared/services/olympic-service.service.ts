@@ -10,9 +10,7 @@ export class OlympicServiceService {
 
   dataUrl: string = "http://localhost:3000/dataOlympic";
   
-  private http = inject(HttpClient);
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getAllOlympic(): Observable<OlympicDto[]>{
     return this.http.get<OlympicDto[]>(this.dataUrl);

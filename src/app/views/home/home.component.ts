@@ -18,13 +18,14 @@ export class HomeComponent implements OnInit {
   public numberOfCountry:number = 0;
 
 
-  public view: [number,number] = [600, 370];
+  public view: [number,number] = [400, 300];
   public showLabels: boolean = true;
 
-  constructor( private router: Router, private olympicService: OlympicServiceService){
+  constructor(private olympicService: OlympicServiceService){
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.getAllOlympics();
+    console.log(this.olympic)
   }
 
   public productSales = [
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
       "name": "book",
       "value": 5001
     }, {
-      "name": "graphic card",
+      "name": "graphic",
       "value": 7322
     }, {
       "name": "desk",
@@ -46,7 +47,6 @@ export class HomeComponent implements OnInit {
     }
   ];
   
-
   getAllOlympics(){
     this.olympicService.getAllOlympic()
     .subscribe({
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
       complete:() => {}
     });
   }
-
+  
   getTotalMedals(){
     for(let i of this.olympic){
       this.numberOfCountry+=1;
@@ -72,5 +72,6 @@ export class HomeComponent implements OnInit {
     }
     this.numberOfJOs/=this.numberOfCountry;
   }
+  
 
 }
