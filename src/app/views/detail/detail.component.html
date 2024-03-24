@@ -1,1 +1,45 @@
-<p>detail works!</p>
+<div class="text-center mt-5">
+    <h3>
+        <span class="rounded px-3 pt-1 pb-2" style="background-color: #02838F; color: white;">
+            {{nameCountry}}
+        </span>
+    </h3>
+    </div>
+
+<div class="d-flex justify-content-center text-center mt-5 mb-5">
+    
+    <span class="rounded ms-2 me-4 px-3 pt-1 pb-1 borderColor">
+        <span class="colorSpan">Number of entries</span> <br><strong> {{ numberEntries }} </strong>
+    </span>
+    <span class="rounded ms-2 me-1 px-3 pt-1 pb-1 borderColor">
+        <span class="colorSpan">Total number medals</span> <br> <strong> {{ totalMedals }} </strong>
+    </span>
+    <span class="rounded ms-2 me-1 px-3 pt-1 pb-1 borderColor">
+        <span class="colorSpan">Total number of athletes</span> <br> <strong> {{ numberAthletes }} </strong>
+    </span>
+</div>
+<div>
+    <ngx-charts-line-chart 
+        [results]="productSales" 
+        [showXAxisLabel]="showXAxisLabel" 
+        [wrapTicks]="true"
+        [gradient]="true"
+        [rotateXAxisTicks]="true"
+        [roundDomains]="true"
+        [showGridLines]="true"
+        [showYAxisLabel]="true"
+        >
+
+    </ngx-charts-line-chart>
+</div>
+
+<div>
+    <h3 class="text-center" style="color:rgb(155, 155, 155)">
+        Dates
+    </h3>
+</div>
+<div class="text-end">
+    <a routerLink="/home" style="background-color: #02838F; color:white" class="btn btn-lg active" role="button" aria-pressed="true">
+        Retour
+    </a>
+</div>
