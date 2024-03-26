@@ -1,6 +1,6 @@
 export interface Participation {
     id:number,
-    year:Date,
+    year:string,
     city:string,
     medalsCount:number,
     athleteCount:number

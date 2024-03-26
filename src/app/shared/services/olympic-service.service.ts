@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 import { OlympicDto } from '../models/dto/olympic-dto';
 
 @Injectable({
