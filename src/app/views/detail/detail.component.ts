@@ -27,22 +27,15 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllOlympics();
-    this.pushDataInNgXCharts();
   }
 
-  public productSalesMulti = [
+  public olympicParticipation = [
       {
-        "name": "book",
+        "name": "",
         "series": [
           {
-            "name": "2012",
-            "value": 125
-          }, {
-            "name": "2014",
-            "value": 197
-          }, {
-            "name": "2015",
-            "value": 209
+            "name": "",
+            "value": 0
           }
         ]
       }
@@ -69,10 +62,25 @@ export class DetailComponent implements OnInit {
              this.nameCountry = this.olympic.country; 
              this.participations = this.olympic.participations;
 
+             this.olympicParticipation = [];
+
              for(let i of this.participations){
                this.numberEntries += 1 ;
                this.numberAthletes += i.athleteCount;
                this.totalMedals += i.medalsCount;
+
+               this.olympicParticipation.push(
+                {
+                  "name": this.olympic.country ,
+                  "series": [
+                    {
+                      "name": i.year,
+                      "value": i.medalsCount
+                    }
+                  ]
+                }
+              );
+
              }
            }
        },
@@ -81,24 +89,5 @@ export class DetailComponent implements OnInit {
        },
        complete:() => {}
      });
-   }
-
-   pushDataInNgXCharts(){
-    if(this.olympic){
-      this.productSalesMulti = [];
-      for(let i =0 ; i< this.participations.length ; i++){
-        this.productSalesMulti.push(
-          {
-            "name": this.olympic.country ,
-            "series": [
-              {
-                "name": this.participations[i].year,
-                "value": this.participations[i].medalsCount
-              }
-            ]
-          }
-        );
-      }
-    }
    }
 }

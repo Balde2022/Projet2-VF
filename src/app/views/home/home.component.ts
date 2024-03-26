@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllOlympics();
-    if(this.olympic != null){
+    /* if(this.olympic != null){
       this.productSales = [];
       for(let i =0 ; i< this.olympic.length ; i++){
         this.productSales.push(
@@ -37,10 +37,10 @@ export class HomeComponent implements OnInit {
           }
         )
       }
-    }
+    } */
   }
 
-  public productSales = [
+  public getOlimpic = [
     {
       "name": "book",
       "value": 5001,
@@ -65,6 +65,17 @@ export class HomeComponent implements OnInit {
       next: (response: OlympicDto[]) => {
         this.olympic = response;
         this.getTotalMedals();
+
+        this.getOlimpic = [];
+        for(let i =0 ; i< this.olympic.length ; i++){
+          this.getOlimpic.push(
+            {
+              "name": this.olympic[i].country,
+              "value": this.olympic[i].totalMedals,
+            }
+          )
+        }
+
       },
       error:(error) => {
         console.log(error);
