@@ -1,27 +1,47 @@
 # TeleSport
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+TCreation d'un projet pour la chaîne de télévision TéléSport pour les jeux olympiques. Le projet consite a mettre en place le front-end d'un dashboard à disposition des utilisateurs permettant de visualiser les informations des précédents Jeux olympiques.
 
-## Development server
+## Architecture du projet
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+src 
+|--app
+|   |__Views
+|   |      |__Detail
+|   |      |      |__detail.component.css
+|   |      |      |__detail.component.html
+|   |      |      |__detail.component.ts
+|   |      |
+|   |      |
+|   |      |__Home
+|   |            |__home.component.css
+|   |            |__home.component.html
+|   |            |__home.component.ts  
+|   |       
+|   |__Shared
+|          |__Models
+|          |     |__Olympic
+|          |     |        |__olympic.ts 
+|          |     |
+|          |     |__Participations
+|          |                     |__participation.ts
+|          |
+|          |__Services
+|          |     |__olympic-services
+|          |                       |__olympic.service.ts
+|          |
+|          |__Not_Found_Pages
+|                           |__not-found-page.component.css
+|                           |__not-found-page.component.html
+|                           |__not-found-page.component.ts
+|__asset
+       |__Mock
+             |__olympic.json
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Lancer l'application
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Pour demarrer le projet, Il faut ouvrir le terminal, puis taper "cd Tele-sport/src/assets/mock" ,puis lancer le serveur json avec la commande "json-server --watch olympic.json" Dans un nouveau terminal pour lancer l'application, enter la commande : ng serve Le navigateur vous redirigera vers l'application a l'adresse : http://localhost:4200

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { Olympic } from '../../shared/models/olympic/olympic';
 import { Participation } from '../../shared/models/participation/participations';
 import { OlympicServiceService } from '../../shared/services/olympic-service.service';
@@ -22,8 +22,8 @@ export class DetailComponent implements OnInit {
   public totalMedals: number = 0;
   public numberAthletes: number = 0;
 
-  constructor(private route: ActivatedRoute, private olympicService: OlympicServiceService){
-  }
+  constructor(private route: ActivatedRoute,private olympicService: OlympicServiceService)
+    {}
 
   ngOnInit(): void {
     this.getAllOlympics();
