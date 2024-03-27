@@ -14,8 +14,6 @@ export class HomeComponent implements OnInit {
   public olympic!: OlympicDto[];
   participations!: Participation[];
 
-  public getDataForChart: any[] = [];
-
   public numberOfJOs:number = 0;
   public numberOfCountry:number = 0;
 
