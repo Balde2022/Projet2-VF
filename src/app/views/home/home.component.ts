@@ -27,17 +27,6 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllOlympics();
-    /* if(this.olympic != null){
-      this.productSales = [];
-      for(let i =0 ; i< this.olympic.length ; i++){
-        this.productSales.push(
-          {
-            "name": this.olympic[i].country,
-            "value": this.olympic[i].totalMedals,
-          }
-        )
-      }
-    } */
   }
 
   public getOlimpic = [

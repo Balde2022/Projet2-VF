@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
+import { ChartDto } from '../../shared/models/dto/chart-dto';
 import { Olympic } from '../../shared/models/olympic/olympic';
 import { Participation } from '../../shared/models/participation/participations';
 import { OlympicServiceService } from '../../shared/services/olympic-service.service';
@@ -22,11 +23,14 @@ export class DetailComponent implements OnInit {
   public totalMedals: number = 0;
   public numberAthletes: number = 0;
 
+  serie: ChartDto[] = [];
+
   constructor(private route: ActivatedRoute,private olympicService: OlympicServiceService)
     {}
 
   ngOnInit(): void {
     this.getAllOlympics();
+    console.log(this.olympicParticipation);
   }
 
   public olympicParticipation = [
@@ -69,19 +73,23 @@ export class DetailComponent implements OnInit {
                this.numberAthletes += i.athleteCount;
                this.totalMedals += i.medalsCount;
 
-               this.olympicParticipation.push(
+              this.serie.push(
                 {
-                  "name": this.olympic.country ,
-                  "series": [
-                    {
-                      "name": i.year,
-                      "value": i.medalsCount
-                    }
-                  ]
+                  "name": i.year,
+                  "value": i.medalsCount
                 }
               );
 
+              console.log(this.serie);
              }
+
+             this.olympicParticipation.push(
+              {
+                "name": this.olympic.country ,
+                "series": this.serie
+              }
+            );
+
            }
        },
        error:(error) => {
