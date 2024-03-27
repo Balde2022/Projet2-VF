@@ -30,7 +30,6 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllOlympics();
-    console.log(this.olympicParticipation);
   }
 
   public olympicParticipation = [
@@ -79,8 +78,6 @@ export class DetailComponent implements OnInit {
                   "value": i.medalsCount
                 }
               );
-
-              console.log(this.serie);
              }
 
              this.olympicParticipation.push(
